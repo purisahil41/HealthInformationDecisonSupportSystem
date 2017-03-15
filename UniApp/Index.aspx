@@ -43,20 +43,118 @@
     <script type="text/javascript" src="/js/custom.js"></script>
 </head>
 <body>
-    <div id="modal"></div>
-    <div id="OpeningDiv">
-        <div style="position: absolute; top: 5%; left: 35%; width: 10%; width: 50%; color: white; color: midnightblue; font-size: 35px; font-weight: 900;">
-            MRI Order Entry System!
+    <form id="form1" runat="server">
+        <div id="modal"></div>
+        <div id="OpeningDiv">
+            <div style="position: absolute; top: 5%; left: 35%; width: 10%; width: 50%; color: white; color: midnightblue; font-size: 35px; font-weight: 900;">
+                MRI Order Entry System!
+            </div>
+            <div style="top: 40%; height: 20%; margin-left: 30%; width: 40%; position: absolute; padding: 3%; padding-top: 4%; background-color: #fff; opacity: 0.8; border-radius: 30px;">
+                <div id="NewPatient" class="label OpeningDivLabel">Add New Patient?</div>
+                <div id="ReturningPatient" class="label OpeningDivLabel">Returning Patients?</div>
+            </div>
         </div>
-        <div style="top: 40%; height: 20%; margin-left: 30%; width: 40%; position: absolute; padding: 3%; padding-top: 4%; background-color: #fff; opacity: 0.8; border-radius: 30px;">
-            <div id="NewPatient" class="label OpeningDivLabel">Add New Patient?</div>
-            <div id="ReturningPatient" class="label OpeningDivLabel">Returning Patients?</div>
-        </div>  
-    </div>
-     <div id="NewPatientDetails">
+        <div id="NewPatientDetails">
+        </div>
+        <div id="PatientSelector">
+            <div style="float: left; font-size: 25px;">
+                Patient ID : &nbsp;
+        
+            </div>
+        <div style="float: left; font-size: 23px;">
+            <asp:DropDownList ID="ddlMainPatient" runat="server" AutoPostBack="true" Style="width: 250px; height: 33px;">
+                <asp:ListItem>-- Select One --</asp:ListItem>
+                <asp:ListItem>Patient 1</asp:ListItem>
+                <asp:ListItem>Patient 2</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        </div>
+        <div class="ReturningDiv">
+
+            <div style="position: relative; width: 100%; height: 10%;">
+                <div class="TabHeader"><span class="TabHeadText">EHR</span> </div>
+                <div class="TabHeader"><span class="TabHeadText">Visits</span> </div>
+                <div class="TabHeader TabSelected"><span class="TabHeadText">CPOE</span>  </div>
+            </div>
+            <div class="RemainderDiv CPOE">
+                <div class="PatientDetailsBox">
+                    <span style="margin-left:40%;font-size:20px;font-weight:bolder;">Patient Details</span>
+                </div>
+                <div class="PatientInfo">
+                     <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">Title</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                    <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">Clinic</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                    <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">First Name</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                    <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">Last Name</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                    <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">First Name</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                     <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">MRN</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                    <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">Date Of Birth</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                     <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">Billing</span>
+                        <input class="pull-right" type="text" value=""/>
+                    </div>
+                     <div class="PatientInfoBox">
+                        <span class="PatientInfoBoxSpan pull-left">Gender</span>
+                        <input class="pull-right" type="text" value="Male"/>
+                    </div>
+
+
+                </div>
+                <div class="PatientDetailsBox">
+                    <span style="margin-left:40%;font-size:20px;font-weight:bolder;">Test Details</span>
+                </div>
+                <div class="TestInfo">
+                    <div class="TestInfoBox">
+                          <span class="PatientInfoBoxSpan pull-left">Ultrasound</span>
+                        <select class="pull-right"></select>
+                    </div>
+                    
+                    <div class="TestInfoBox">
+                           <span class="PatientInfoBoxSpan pull-left">CT</span>
+                      <select class="pull-right"></select>
+                    </div>
+                    <div class="TestInfoBox">
+                           <span class="PatientInfoBoxSpan pull-left">MRI</span>
+                       <select class="pull-right"></select>
+                    </div>
+                     
+                    <div class="TestInfoBox">
+                           <span class="PatientInfoBoxSpan pull-left">X-RAY</span>
+                      <select class="pull-right"></select>
+                    </div>
+                    <input type="submit" class="SubmitButton btn btn-info" value="Submit Button">
+                </div>
+            </div>
+              <div class="RemainderDiv EHR hidden">
+               
+            </div>
+            <div class="RemainderDiv VISITS hidden">
+               
+            </div>
 
         </div>
-    <%--<form id="form1" runat="server">
+    </form>
+    <%--  <form id="form1" runat="server" style="position:absolute;top:0;left:0;z-index:-1;">
         <div id="Page-Wrapper">
             <div id="Page-Container">
                 <div id="Page-Body">
