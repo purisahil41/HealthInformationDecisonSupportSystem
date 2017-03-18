@@ -43,18 +43,78 @@
     <script type="text/javascript" src="/js/custom.js"></script>
 </head>
 <body>
+    <div id="LoginPage">
+        <div id="LoginDialog">
+            <div style="height:20%;width:100%;border-bottom:1px dashed black; text-align:center;padding-top:10px;font-weight:bold;font-size:35px;">Login!</div>
+       <div style="height:30%; width:100%;padding:8%;">
+           <div style="float:left;width:40%;height:10%;font-size:25px;"> User Name : </div>
+           <input id="LoginUserTextBox" style="height:30px;" type="text" value="" />
+       </div>
+             <div style="height:30%; width:100%;padding:8%;">
+           <div style="float:left;width:40%;height:10%;font-size:25px;"> Password : </div>
+           <input id="LoginUserPasswordTextBox" style="height:30px;font-size:20px;" type="Password" value=""/>
+       </div>
+             <input type="submit" class="SubmitButton btn btn-info LoginSubmit" style="width:100px;height:40px;color:black" value="Submit!">
+             </div>
+    </div>
     <form id="form1" runat="server">
         <div id="modal"></div>
         <div id="OpeningDiv">
             <div style="position: absolute; top: 5%; left: 35%; width: 10%; width: 50%; color: white; color: midnightblue; font-size: 35px; font-weight: 900;">
                 MRI Order Entry System!
             </div>
-            <div style="top: 40%; height: 20%; margin-left: 30%; width: 40%; position: absolute; padding: 3%; padding-top: 4%; background-color: #fff; opacity: 0.8; border-radius: 30px;">
+            <div id="InputBox" style="top: 40%; height: 20%; margin-left: 30%; width: 40%; position: absolute; padding: 3%; padding-top: 4%; background-color: #fff; opacity: 0.8; border-radius: 30px;">
                 <div id="NewPatient" class="label OpeningDivLabel">Add New Patient?</div>
-                <div id="ReturningPatient" class="label OpeningDivLabel">Returning Patients?</div>
+                <div id="ReturningPatient" class="label OpeningDivLabel">Returning Patients?</div><br />
+     <div id="InterfaceConfig" style="display:none; position: relative;
+    /* margin-top: -1%; */
+    top: 60%;
+    left: 20%;" class="label OpeningDivLabel">Rule Base Add/Edits?</div>
             </div>
         </div>
         <div id="NewPatientDetails">
+            
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 2%;">
+                    <label for="title" style="font:20px">Title:</label>
+                    <asp:DropDownList id="title" runat="server" AutoPostBack="true" Style="width: 40%; margin-left: 5%;height: 5%">
+                        <asp:ListItem>Mr.</asp:ListItem>
+                        <asp:ListItem>Ms.</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" id="first_name" style="height: 5%;">
+                </div>
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" class="form-control" id="last_name" style="height: 5%;">
+                </div>
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" class="form-control" id="dob">
+                </div>
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
+                    <label for="gender">Sex:</label>
+                    <asp:DropDownList id="gender" runat="server" AutoPostBack="true" Style="width: 40%; margin-left: 5%;height: 5%;">
+                        <asp:ListItem>Male</asp:ListItem>
+                        <asp:ListItem>Female</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
+                    <label for="clinic">Clinic:</label>
+                    <input type="text" class="form-control" id="clinic" style="height: 5%;">
+                </div>
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
+                    <label for="MRN">MRN:</label>
+                    <input type="text" class="form-control" id="MRN" style="height: 5%;">
+                </div>
+                <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
+                    <label for="billing">Billing:</label>
+                    <input type="text" class="form-control" id="billing" style="height: 5%;">
+                </div>
+                <button type="button" id="addDetailsButton"class="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px">Submit</button><button type="button" id="cancelButton" class="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px">Cancel</button>
+                                
+            
         </div>
         <div id="PatientSelector">
             <div style="float: left; font-size: 25px;">
@@ -73,7 +133,7 @@
 
             <div style="position: relative; width: 100%; height: 10%;">
                 <div class="TabHeader"><span class="TabHeadText">EHR</span> </div>
-                <div class="TabHeader"><span class="TabHeadText">Visits</span> </div>
+                <div class="TabHeader"><span class="TabHeadText">VISITS</span> </div>
                 <div class="TabHeader TabSelected"><span class="TabHeadText">CPOE</span>  </div>
             </div>
             <div class="RemainderDiv CPOE">

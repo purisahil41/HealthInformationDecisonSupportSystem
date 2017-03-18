@@ -1,4 +1,42 @@
-﻿$(document).ready(function ($) {
+﻿var loginUser = "";
+$(document).ready(function ($) {
+    $('#LoginPage').show();
+    $('#form1').hide();
+
+    $('#addDetailsButton').click(function () {
+        $('#modal').hide();
+        $('#NewPatientDetails').hide();
+        $('#OpeningDiv').show();
+    });
+
+    $('#cancelButton').click(function () {
+        $('#modal').hide();
+        $('#NewPatientDetails').hide();
+        $('#OpeningDiv').show();
+    });
+    $('.LoginSubmit').click(function () {
+        var userID = $('#LoginUserTextBox').val();
+        var passWordID = $('#LoginUserPasswordTextBox').val();
+        if ((userID == "parul" && passWordID == "verma") || (userID == "" && passWordID == ""))
+        {
+            loginUser = "ENTRYUSER";
+            $('#LoginPage').hide();
+            $('#form1').show();
+        }
+        else if(userID == "admin" && passWordID == "admin")
+        {
+            loginUser = "ADMINUSER";
+            $('#LoginPage').hide();
+            $('#form1').show();
+            $('#InputBox').css('height', '30%');
+            $('#InterfaceConfig').show();
+        }
+        else {
+            alert("Incorrect login details");
+            $('#LoginUserTextBox').val('');
+            $('#LoginUserPasswordTextBox').val('');
+        }
+    });
 
     $('#NewPatient').click(function () {
         $('#modal').show();
@@ -24,7 +62,16 @@
             $('.TabHeader').each(function () {
                 $(this).removeClass('TabSelected');
             });
+            var text = $(this).text().trim();
             $(this).addClass('TabSelected');
+            $('.RemainderDiv').each(function () {
+                if ($(this).hasClass(text)) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            });
         }
     });
 });
