@@ -1,13 +1,31 @@
 ﻿var loginUser = "";
 $(document).ready(function ($) {
-    $('#LoginPage').show();
-    $('#form1').hide();
+   
+        $('#LoginPage').show();
+        $('#form1').hide();
+  
+    
 
-    $('#addDetailsButton').click(function () {
-        $('#modal').hide();
-        $('#NewPatientDetails').hide();
-        $('#OpeningDiv').show();
-    });
+        $('#addDetailsButton').click(function () {
+            $.ajax({
+                type: "GET",
+               url: "Index.aspx/addDetailsButtonClick",
+                //contentType: 'application/json; charset=utf-8',
+                //dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                },
+                success: function (data) {
+                    $('#modal').hide();
+                    $('#NewPatientDetails').hide();
+                    $('#OpeningDiv').show();
+                    alert(data);
+                }
+
+            });
+        });
+
+      
 
     $('#cancelButton').click(function () {
         $('#modal').hide();
@@ -44,17 +62,17 @@ $(document).ready(function ($) {
         // $('#OpeningDiv').hide();
     });
 
-    $('#ReturningPatient').click(function () {
-        $('#OpeningDiv').css({ 'transition': '3s', 'background-position': '0px -200px' });
-        $('#OpeningDiv').css({ 'transition': '3s', 'height': '0px' });
-        //$('#OpeningDiv > div:nth-child(2)').css({ 'transition': '1s', 'opacity': '0' });
-        $('#OpeningDiv > div').css({ 'transition': '1s', 'opacity': '0' });
-        setTimeout(function () {
-            //$('#OpeningDiv div:nth-child(2)').hide();
-            $('#OpeningDiv > div').hide();
-            $('#PatientSelector').show();
-        }, 2000);
-    });
+    //$('#ReturningPatient').click(function () {
+    //    $('#OpeningDiv').css({ 'transition': '3s', 'background-position': '0px -200px' });
+    //    $('#OpeningDiv').css({ 'transition': '3s', 'height': '0px' });
+    //    //$('#OpeningDiv > div:nth-child(2)').css({ 'transition': '1s', 'opacity': '0' });
+    //    $('#OpeningDiv > div').css({ 'transition': '1s', 'opacity': '0' });
+    //    setTimeout(function () {
+    //        //$('#OpeningDiv div:nth-child(2)').hide();
+    //        $('#OpeningDiv > div').hide();
+    //        $('#PatientSelector').show();
+    //    }, 2000);
+    //});
 
     $('.TabHeader').click(function () {
         if(!$(this).hasClass('TabSelected'))

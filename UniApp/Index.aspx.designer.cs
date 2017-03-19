@@ -22,13 +22,40 @@ namespace UniApp {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// title control.
+        /// titleBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList title;
+        protected global::System.Web.UI.WebControls.DropDownList titleBox;
+        
+        /// <summary>
+        /// firstNameBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText firstNameBox;
+        
+        /// <summary>
+        /// lastNameBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lastNameBox;
+        
+        /// <summary>
+        /// dobBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dobBox;
         
         /// <summary>
         /// gender control.
@@ -40,12 +67,30 @@ namespace UniApp {
         protected global::System.Web.UI.WebControls.DropDownList gender;
         
         /// <summary>
-        /// ddlMainPatient control.
+        /// clinicBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMainPatient;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText clinicBox;
+        
+        /// <summary>
+        /// MRNBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText MRNBox;
+        
+        /// <summary>
+        /// billingBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText billingBox;
     }
 }

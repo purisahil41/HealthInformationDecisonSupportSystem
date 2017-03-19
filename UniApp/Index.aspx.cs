@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
+using System.Web.Script.Services;
 
 namespace UniApp
 {
@@ -11,6 +13,43 @@ namespace UniApp
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true)]
+        public String addDetailsButtonClick()
+        {
+            String titleText = "";
+            String firstText = "";
+            String lastText = "";
+            String dateOfBirth = "";
+            String sexText = "";
+            String clinicText = "";
+            String mrnText = "";
+            String billingText = "";
+
+            titleText = titleBox.Text;
+            firstText = firstNameBox.Value;
+            lastText = lastNameBox.Value;
+            dateOfBirth = dobBox.Value;
+            sexText = gender.Text;
+            clinicText = clinicBox.Value;
+            mrnText = MRNBox.Value;
+            billingText = billingBox.Value;
+
+            using (var db = new UniversityMHIProjectContext())
+            {
+                var patientDet = new PatientDetails { BillingDetails = billingText, Clinic = clinicText, DateOfBirth = dateOfBirth, FirstName = firstText, LastName = lastText, Gender = sexText, MRN = mrnText, ReferringPhyscian = "", Signature = "" };
+                db.PatientDetails.Add(patientDet);
+                db.SaveChanges();
+            }
+
+            return "true";
+        }
+
+        protected void ReturningPatient_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ReturningPatient.aspx");
         }
 
         //        protected void btnDiagnosticExamSubmit_OnClick(object sender, EventArgs e)
