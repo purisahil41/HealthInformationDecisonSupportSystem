@@ -1,29 +1,30 @@
 ﻿var loginUser = "";
 $(document).ready(function ($) {
-   
-        $('#LoginPage').show();
-        $('#form1').hide();
+    //alert(loginUser);
+  
+        //$('#LoginPage').show();
+        //$('#form1').hide();
   
     
 
-        $('#addDetailsButton').click(function () {
-            $.ajax({
-                type: "GET",
-               url: "Index.aspx/addDetailsButtonClick",
-                //contentType: 'application/json; charset=utf-8',
-                //dataType: 'json',
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
-                },
-                success: function (data) {
-                    $('#modal').hide();
-                    $('#NewPatientDetails').hide();
-                    $('#OpeningDiv').show();
-                    alert(data);
-                }
+        //$('#addDetailsButton').click(function () {
+        //    $.ajax({
+        //        type: "GET",
+        //       url: "Index.aspx/addDetailsButtonClick",
+        //        //contentType: 'application/json; charset=utf-8',
+        //        //dataType: 'json',
+        //        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        //            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        //        },
+        //        success: function (data) {
+        //            $('#modal').hide();
+        //            $('#NewPatientDetails').hide();
+        //            $('#OpeningDiv').show();
+        //            alert(data);
+        //        }
 
-            });
-        });
+        //    });
+        //});
 
       
 
@@ -38,15 +39,17 @@ $(document).ready(function ($) {
         if ((userID == "parul" && passWordID == "verma") || (userID == "" && passWordID == ""))
         {
             loginUser = "ENTRYUSER";
-            $('#LoginPage').hide();
-            $('#form1').show();
+            window.location.href = "http://localhost:59778/Index.aspx";
+           // $('#LoginPage').hide();
+            //$('#form1').show();
         }
         else if(userID == "admin" && passWordID == "admin")
         {
             loginUser = "ADMINUSER";
-            $('#LoginPage').hide();
-            $('#form1').show();
-            $('#InputBox').css('height', '30%');
+            window.location.href = "http://localhost:59778/Index.aspx";
+          //  $('#LoginPage').hide();
+           // $('#form1').show();
+            //$('#InputBox').css('height', '30%');
             $('#InterfaceConfig').show();
         }
         else {

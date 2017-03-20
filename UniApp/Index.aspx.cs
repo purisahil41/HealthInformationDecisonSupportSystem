@@ -15,9 +15,8 @@ namespace UniApp
 
         }
 
-        [WebMethod]
-        [ScriptMethod(UseHttpGet = true)]
-        public String addDetailsButtonClick()
+       
+        protected void addDetailsButtonClick(object sender, EventArgs e)
         {
             String titleText = "";
             String firstText = "";
@@ -44,7 +43,7 @@ namespace UniApp
                 db.SaveChanges();
             }
 
-            return "true";
+            Response.Redirect("ReturningPatient.aspx");
         }
 
         protected void ReturningPatient_Click(object sender, EventArgs e)

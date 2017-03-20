@@ -110,6 +110,17 @@
     font-weight: 900;
 }
 
+.LabelInput
+{
+    background-color: #fff;
+    width: auto;
+    text-overflow: ellipsis;
+    padding: 2px;
+    height: 100%;
+    float: left;
+    margin-left: 2%;
+}
+
 .TabHeader:hover {
     width: 33.3%;
     height: 100%;

@@ -15,8 +15,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="copyright" content="Beerinder Chhina Project." />
-    <meta name="author" content="Beerinder Chhina" />
+
     <meta name="revisit-after" content="2 weeks" />
     <meta name="distribution" content="global" />
     <meta name="rating" content="general" />
@@ -46,8 +45,8 @@
         <div style="float: left; font-size: 23px;">
             <asp:DropDownList ID="ddlMainPatient" runat="server" AutoPostBack="true" Style="width: 250px; height: 33px;" OnSelectedIndexChanged="dropDrownSelectionIndexChanged">
                 <asp:ListItem>-- Select One --</asp:ListItem>
-                <asp:ListItem>Patient 1</asp:ListItem>
-                <asp:ListItem>Patient 2</asp:ListItem>
+            <%--    <asp:ListItem>Patient 1</asp:ListItem>
+                <asp:ListItem>Patient 2</asp:ListItem>--%>
             </asp:DropDownList>
         </div>
         </div>
@@ -73,31 +72,31 @@
                     </div>
                     <div class="PatientInfoBox">
                         <span class="PatientInfoBoxSpan pull-left">First Name</span>
-                        <input class="pull-right" type="text" value=""/>
+                        <asp:TextBox runat="server" ID="aspFirstNameTextBox" class="pull-right" type="text" value=""/>
                     </div>
                     <div class="PatientInfoBox">
                         <span class="PatientInfoBoxSpan pull-left">Last Name</span>
-                        <input class="pull-right" type="text" value=""/>
+                        <asp:TextBox runat="server" ID="aspLastNameTextBox" class="pull-right" type="text" value=""/>
                     </div>
-                    <div class="PatientInfoBox">
+                <%--  <div class="PatientInfoBox">
                         <span class="PatientInfoBoxSpan pull-left">First Name</span>
-                        <input class="pull-right" type="text" value=""/>
-                    </div>
+                        <asp:TextBox runat="server" ID="aspTitleTextBox" class="pull-right" type="text" value=""/>
+                    </div>--%>
                      <div class="PatientInfoBox">
                         <span class="PatientInfoBoxSpan pull-left">MRN</span>
-                        <input class="pull-right" type="text" value=""/>
+                        <asp:TextBox runat="server" ID="aspMRNTextBox" class="pull-right" type="text" value=""/>
                     </div>
                     <div class="PatientInfoBox">
                         <span class="PatientInfoBoxSpan pull-left">Date Of Birth</span>
-                        <input class="pull-right" type="text" value=""/>
+                        <asp:TextBOx runat="server" ID="aspDOBTextBox" class="pull-right" type="text" value=""/>
                     </div>
                      <div class="PatientInfoBox">
                         <span class="PatientInfoBoxSpan pull-left">Billing</span>
-                        <input class="pull-right" type="text" value=""/>
+                        <asp:TextBox runat="server" ID="aspBillingTextBox" class="pull-right" type="text" value=""/>
                     </div>
                      <div class="PatientInfoBox">
                         <span class="PatientInfoBoxSpan pull-left">Gender</span>
-                        <input class="pull-right" type="text" value="Male"/>
+                        <asp:TextBox runat="server" ID="aspGenderTextBox" class="pull-right" type="text" value="Male"/>
                     </div>
 
 
@@ -108,30 +107,53 @@
                 <div class="TestInfo">
                     <div class="TestInfoBox">
                           <span class="PatientInfoBoxSpan pull-left">Ultrasound</span>
-                        <select class="pull-right"></select>
+                         <asp:DropDownList ID="DropDownListUltrasound" runat="server" AutoPostBack="true" CssClass="pull-right">
+                             <asp:ListItem>-- Select One --</asp:ListItem>
+                         </asp:DropDownList>
+                        
                     </div>
                     
                     <div class="TestInfoBox">
                            <span class="PatientInfoBoxSpan pull-left">CT</span>
-                      <select class="pull-right"></select>
+                     <asp:DropDownList ID="DropDownListCT" runat="server" AutoPostBack="true" CssClass="pull-right">
+                         <asp:ListItem>-- Select One --</asp:ListItem>
+                     </asp:DropDownList>
                     </div>
                     <div class="TestInfoBox">
                            <span class="PatientInfoBoxSpan pull-left">MRI</span>
-                       <select class="pull-right"></select>
+                       <asp:DropDownList ID="DropDownListMRI" runat="server" AutoPostBack="true" CssClass="pull-right">
+                           <asp:ListItem>-- Select One --</asp:ListItem>
+                       </asp:DropDownList>
                     </div>
                      
                     <div class="TestInfoBox">
                            <span class="PatientInfoBoxSpan pull-left">X-RAY</span>
-                      <select class="pull-right"></select>
+                      <asp:DropDownList ID="DropDownListXRAY" runat="server" AutoPostBack="true" CssClass="pull-right">
+                          <asp:ListItem>-- Select One --</asp:ListItem>
+                      </asp:DropDownList>
                     </div>
                     <input type="submit" class="SubmitButton btn btn-info" value="Submit Button"/>
                 </div>
             </div>
-              <div class="RemainderDiv EHR hidden">
+              <div class="RemainderDiv EHR" style="display:none;">
                
             </div>
-            <div class="RemainderDiv VISITS hidden">
-               
+            <div class="RemainderDiv VISITS" style="display:none;">
+                <div class="PatientDetailsBox">
+                    <span style="margin-left:40%;font-size:20px;font-weight:bolder;">Patient Visits Details!</span>
+                </div>
+                <% foreach(UniApp.PatientTestJunction ptDet in patientTestJunc)
+                   {
+                       %>
+                  <div class="PatientDetailsBox">
+                      
+                    <div class="LabelInput"><span> Name : <%=ptDet.Patient.FirstName + " " + ptDet.Patient.LastName %></span></div>
+                        <div class="LabelInput"><span>Diagnostic : <%=ptDet.Diagnosis.TestType + " " + ptDet.Diagnosis.TestSubType%></span></div>
+                        <div class="LabelInput"><span> Date : <%=ptDet.Date%></span></div>
+                        <%--<div class="LabelInput"><span> First Name - <%=ptDet.Patient.FirstName + " " + ptDet.Patient.LastName %></span></div>--%>
+                </div>
+               <%
+               } %>
             </div>
 
         </div>

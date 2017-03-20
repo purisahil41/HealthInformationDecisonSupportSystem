@@ -26,11 +26,52 @@ namespace UniApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+
             context.PatientDetails.AddOrUpdate(
                 new PatientDetails { FirstName = "Parul", LastName = "Verma", DateOfBirth = "15Sep1991", Clinic = "SatuCLinic", MRN = "MRN00001", ReferringPhyscian = "Doctor 1", Signature = "MuSyg", BillingDetails = "PaidInsurance", Gender = "Male" }
-                //new PatientDetails("Sahil","Puri","15Sep1991","SatyuClinic","MRN000002", "Doctor 2","MySig", "PaidInsurance","Male");
-                //new PatientDetails("Satuajeet","Pat","12De1991","SatyuClinic","MRN000003", "DOctor 3","MySig", "PaidInsurance","Male");
        );
+
+            context.PatientTestJunction.AddOrUpdate(
+                new PatientTestJunction { PatientId = 1, DiagnosisTestID = 29 }
+                );
+            context.DiagnosisTest.AddOrUpdate(
+             new DiagnosisTest { TestSubType = "Central Nervous System", TestType = "CT" },
+               new DiagnosisTest { TestSubType = "Musculoskeltal", TestType = "CT" },
+               new DiagnosisTest { TestSubType = "Abdomen", TestType = "CT" },
+                              new DiagnosisTest { TestSubType = "Chest", TestType = "CT" },
+                                             new DiagnosisTest { TestSubType = "Head", TestType = "CT" },
+                                             new DiagnosisTest { TestSubType = "Neck", TestType = "CT" },
+                                             new DiagnosisTest { TestSubType = "Spine", TestType = "CT" },
+
+                                             new DiagnosisTest { TestSubType = "Central Nervous System", TestType = "XRAY" },
+               new DiagnosisTest { TestSubType = "Musculoskeltal", TestType = "XRAY" },
+               new DiagnosisTest { TestSubType = "Abdomen", TestType = "XRAY" },
+                              new DiagnosisTest { TestSubType = "Chest", TestType = "XRAY" },
+                                             new DiagnosisTest { TestSubType = "Head", TestType = "XRAY" },
+                                             new DiagnosisTest { TestSubType = "Neck", TestType = "XRAY" },
+                                             new DiagnosisTest { TestSubType = "Spine", TestType = "XRAY" },
+
+
+                                             new DiagnosisTest { TestSubType = "Central Nervous System", TestType = "Ultrasound" },
+               new DiagnosisTest { TestSubType = "Musculoskeltal", TestType = "Ultrasound" },
+               new DiagnosisTest { TestSubType = "Abdomen", TestType = "Ultrasound" },
+                              new DiagnosisTest { TestSubType = "Chest", TestType = "Ultrasound" },
+                                             new DiagnosisTest { TestSubType = "Head", TestType = "Ultrasound" },
+                                             new DiagnosisTest { TestSubType = "Neck", TestType = "Ultrasound" },
+                                             new DiagnosisTest { TestSubType = "Spine", TestType = "Ultrasound" },
+
+
+                                             new DiagnosisTest { TestSubType = "Central Nervous System", TestType = "MRI" },
+               new DiagnosisTest { TestSubType = "Musculoskeltal", TestType = "MRI" },
+               new DiagnosisTest { TestSubType = "Abdomen", TestType = "MRI" },
+                              new DiagnosisTest { TestSubType = "Chest", TestType = "MRI" },
+                                             new DiagnosisTest { TestSubType = "Head", TestType = "MRI" },
+                                             new DiagnosisTest { TestSubType = "Neck", TestType = "MRI" },
+                                             new DiagnosisTest { TestSubType = "Spine - Cervical Spine", TestType = "MRI" },
+                                             new DiagnosisTest { TestSubType = "Spine - Lumbar Spine", TestType = "MRI" },
+                                             new DiagnosisTest { TestSubType = "Spine - Thoracic Spine", TestType = "MRI" }
+      );
         }
     }
 }

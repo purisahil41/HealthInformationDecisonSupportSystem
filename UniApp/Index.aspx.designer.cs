@@ -22,6 +22,15 @@ namespace UniApp {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// ReturningPatient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ReturningPatient;
+        
+        /// <summary>
         /// titleBox control.
         /// </summary>
         /// <remarks>
@@ -92,5 +101,14 @@ namespace UniApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText billingBox;
+        
+        /// <summary>
+        /// addDetailsButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addDetailsButton;
     }
 }

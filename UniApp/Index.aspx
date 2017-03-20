@@ -17,7 +17,6 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="copyright" content="Beerinder Chhina Project." />
     <meta name="author" content="Beerinder Chhina" />
     <meta name="revisit-after" content="2 weeks" />
     <meta name="distribution" content="global" />
@@ -36,33 +35,20 @@
     <script type="text/javascript" src="/js/custom.js"></script>
 </head>
 <body>
-    <div id="LoginPage">
-        <div id="LoginDialog">
-            <div style="height:20%;width:100%;border-bottom:1px dashed black; text-align:center;padding-top:10px;font-weight:bold;font-size:35px;">Login!</div>
-       <div style="height:30%; width:100%;padding:8%;">
-           <div style="float:left;width:40%;height:10%;font-size:25px;"> User Name : </div>
-           <input id="LoginUserTextBox" style="height:30px;" type="text" value="" />
-       </div>
-             <div style="height:30%; width:100%;padding:8%;">
-           <div style="float:left;width:40%;height:10%;font-size:25px;"> Password : </div>
-           <input id="LoginUserPasswordTextBox" style="height:30px;font-size:20px;" type="Password" value=""/>
-       </div>
-             <input type="submit" class="SubmitButton btn btn-info LoginSubmit" style="width:100px;height:40px;color:black" value="Submit!">
-             </div>
-    </div>
+  
     <form id="form1" runat="server">
         <div id="modal"></div>
         <div id="OpeningDiv">
             <div style="position: absolute; top: 5%; left: 35%; width: 10%; width: 50%; color: white; color: midnightblue; font-size: 35px; font-weight: 900;">
                 MRI Order Entry System!
             </div>
-            <div id="InputBox" style="top: 40%; height: 20%; margin-left: 30%; width: 40%; position: absolute; padding: 3%; padding-top: 4%; background-color: #fff; opacity: 0.8; border-radius: 30px;">
+            <div id="InputBox" style="top: 40%; height: 30%; margin-left: 30%; width: 40%; position: absolute; padding: 3%; padding-top: 4%; background-color: #fff; opacity: 0.8; border-radius: 30px;">
                 <div id="NewPatient" class="label OpeningDivLabel">Add New Patient?</div>
                 <asp:LinkButton runat="server" id="ReturningPatient" class="label OpeningDivLabel" OnClick="ReturningPatient_Click">Returning Patients?</asp:LinkButton><br />
-     <div id="InterfaceConfig" style="display:none; position: relative;
+     <a id="InterfaceConfig" style="position: relative;
     /* margin-top: -1%; */
     top: 60%;
-    left: 20%;" class="label OpeningDivLabel">Rule Base Add/Edits?</div>
+    left: 14%;" class="label OpeningDivLabel" href="RULE_SET_FOR_MRI_APPROPRIATENESS.pdf" target="_blank">Rule Base View / Edit / Add ?</a>
             </div>
         </div>
         <div id="NewPatientDetails">
@@ -105,7 +91,7 @@
                     <label for="billing">Billing:</label>
                     <input type="text" class="form-control" id="billingBox" runat="server" style="height: 5%;">
                 </div>
-                <button type="button" id="addDetailsButton" class="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px">Submit</button><button type="button" id="cancelButton" class="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px">Cancel</button>
+                <asp:Button runat="server" OnClick="addDetailsButtonClick" id="addDetailsButton" CssClass="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px" Text="Submit"></asp:Button><button type="button" id="cancelButton" class="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px">Cancel</button>
                                 
             
         </div>
