@@ -91,7 +91,7 @@
                     <label for="billing">Billing:</label>
                     <input type="text" class="form-control" id="billingBox" runat="server" style="height: 5%;">
                 </div>
-                <asp:Button runat="server" OnClick="addDetailsButtonClick" id="addDetailsButton" CssClass="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px" Text="Submit"></asp:Button><button type="button" id="cancelButton" class="btn btn-primary" style="margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px">Cancel</button>
+                <asp:Button runat="server" OnClick="addDetailsButtonClick" id="addDetailsButton" CssClass="btn btn-primary" style="height:5%;margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px" Text="Submit"></asp:Button><button type="button" id="cancelButton" class="btn btn-primary" style="height:5%;margin-left: 5%; width: 38%;padding-top: 0.1%;font: 10px">Cancel</button>
                                 
             
         </div>
