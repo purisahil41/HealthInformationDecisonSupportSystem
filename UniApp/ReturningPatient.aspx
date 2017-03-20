@@ -133,6 +133,39 @@
                       </asp:DropDownList>
                     </div>
                     <input type="submit" class="SubmitButton btn btn-info" value="Submit Button"/>
+                    <asp:LinkButton ID="btnDiagnosticExamSubmit" Text ="Submit Test" CssClass="SubmitButton btn btn-info"  OnClientClick="return false;" runat="server"/>
+                </div>
+                <div class="ConfirmOrder">
+                        <div class="label" style="font-size: 18px; color: black; margin-left: -34%;">
+                            <label for="Reason-for-test" style="font-size:19px;">Clinical indication for Exam</label>
+                        </div>
+                        <div class="TestInfoBox" style="margin-top: 25.5px;">
+                            <span class="PatientInfoBoxSpan pull-left">Reasons for Study</span>
+                            <select class="pull-right"></select>
+                        </div>
+                        <div class="TestInfoBox" style="margin-top: -0.5%;">
+                            <span class="PatientInfoBoxSpan pull-left">Diagnosis/Problem</span>
+                            <select class="pull-right"></select>
+                        </div>
+                        <label for="overrideReason" style="position: absolute; margin-left: -37.05%; margin-top: 5%; font-weight: normal;">Please specify the reason if not included in above list:</label>
+                        <input type="text" class="form-control" id="overrideReason" style="height: 35%; width: 28%; margin-left: 1%; margin-top: 4.2%;"/>
+                        <div id="placeOrder"  class="SubmitButton btn btn-info" style="margin-top: -7%;">Place Order</div>  
+                </div>
+            </div>
+            <div id="Page-Dialog-DecisionSupport" class="modal-content" style="display: none;">
+                <h3>Decision Support</h3>
+                <p><b>
+<%--                <label id="lblDecisionSupportText"/>--%>
+                <asp:Label ID="lblDecisionSupportText" runat="server"/>
+                </b></p>
+                <div style="text-align: center;">
+                    <%--<asp:LinkButton ID="lbnDecisionSupportCancel" Text="Cancel Order" CssClass="Button blue" runat="server"/>
+                    <asp:LinkButton ID="lbnDecisionSupportContinue" Text="Continue Order" CssClass="Button blue" runat="server"/>
+                    --%>
+                    
+                    <div id="lbnDecisionSupportCancel"  class="SubmitButton btn btn-info">Cancel Order</div>
+                    <div id="lbnDecisionSupportContinue" class="SubmitButton btn btn-info">Continue Order</div>
+                    
                 </div>
             </div>
               <div class="RemainderDiv EHR" style="display:none;">
