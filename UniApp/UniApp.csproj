@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiagnosisProblem.cs" />
     <Compile Include="DiagnosisTest.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -92,6 +93,7 @@
     <Compile Include="ReturningPatient.aspx.designer.cs">
       <DependentUpon>ReturningPatient.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StudyReason.cs" />
     <Compile Include="UniversityMHIProjectContext.cs" />
   </ItemGroup>
   <ItemGroup>

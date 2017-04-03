@@ -29,7 +29,7 @@ namespace UniApp.Migrations
 
 
             context.PatientDetails.AddOrUpdate(
-                new PatientDetails { FirstName = "Parul", LastName = "Verma", DateOfBirth = "15Sep1991", Clinic = "SatuCLinic", MRN = "MRN00001", ReferringPhyscian = "Doctor 1", Signature = "MuSyg", BillingDetails = "PaidInsurance", Gender = "Male" }
+                new PatientDetails { FirstName = "Parul", LastName = "Verma", DateOfBirth = "15Sep1991", Clinic = "CLinic", MRN = "MRN00001", ReferringPhyscian = "Doctor 1", Signature = "MuSyg", BillingDetails = "PaidInsurance", Gender = "Male" }
        );
 
             context.PatientTestJunction.AddOrUpdate(
@@ -72,6 +72,21 @@ namespace UniApp.Migrations
                                              new DiagnosisTest { TestSubType = "Spine - Lumbar Spine", TestType = "MRI" },
                                              new DiagnosisTest { TestSubType = "Spine - Thoracic Spine", TestType = "MRI" }
       );
+
+            context.StudyReason.AddOrUpdate(
+                new StudyReason{Reason="Chest Pain"},
+                new StudyReason{Reason="Trauma"},
+                new StudyReason{Reason="Infection"},
+                new StudyReason{Reason="Nodule"}
+                
+                );
+
+            context.DiagnosisProblem.AddOrUpdate(
+                new DiagnosisProblem { Problem= "Pneumonia" },
+                new DiagnosisProblem { Problem = "Acute exacerbation of COPD" },
+                new DiagnosisProblem { Problem  = "Upper respiratory track infection" },
+                new DiagnosisProblem { Problem = "Pulmanory metastases" }
+                );
         }
     }
 }

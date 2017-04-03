@@ -29,6 +29,16 @@ namespace UniApp
 
         [StringLength(200)]
         public String Date { get; set; }
+
+        public String ReasonStudy { get; set; }
+
+        public String DiagnosticProblem { get; set; }
+
+        [ForeignKey("ReasonStudy")]
+        public StudyReason StudyReason { get; set; }
+
+        [ForeignKey("DiagnosticProblem")]
+        public DiagnosisProblem DiagnosticProblemObj { get; set; }
     
     }
 }

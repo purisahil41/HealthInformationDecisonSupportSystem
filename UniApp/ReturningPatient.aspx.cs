@@ -17,9 +17,13 @@ namespace UniApp
 
 
                 DropDownListMRI.Items.Clear();
+                DropDownListMRI.Items.Add("Select one");
                 DropDownListCT.Items.Clear();
+                DropDownListCT.Items.Add("Select one");
                 DropDownListXRAY.Items.Clear();
+                DropDownListXRAY.Items.Add("Select one");
                 DropDownListUltrasound.Items.Clear();
+                DropDownListUltrasound.Items.Add("Select one");
                 ddlMainPatient.Items.Clear();
                 patientTestJunc.Clear();
                 ddlMainPatient.Items.Add("----Select One----");
@@ -33,6 +37,16 @@ namespace UniApp
                     foreach (PatientDetails ptDet in db.PatientDetails)
                     {
                         patientDetailsList.Add(ptDet);
+                    }
+
+                    foreach(StudyReason resStu in db.StudyReason)
+                    {
+                        StudyReasonDropdown.Items.Add(resStu.Reason);
+                    }
+
+                    foreach(DiagnosisProblem prb in db.DiagnosisProblem)
+                    {
+                        DiagnosisProblemDropDon.Items.Add(prb.Problem);
                     }
 
                     foreach (DiagnosisTest test in db.DiagnosisTest)
@@ -95,6 +109,26 @@ namespace UniApp
                 aspMRNTextBox.Text = ptDet.MRN;
                 aspTitleTextBox.Text = "Mr.";
             }
+        }
+
+        protected void orderConfirmation(object sender, EventArgs e)
+        {
+            String Date = System.DateTime.Today.ToString();
+            int patientID = ddlMainPatient.SelectedIndex;
+            String diagnosticType = "MRI";
+            String subType = DropDownListMRI.SelectedValue;
+            String reasonTest = StudyReasonDropdown.SelectedValue;
+            String DiagnosisProblem = DiagnosisProblemDropDon.SelectedValue;
+
+            using (var db = new UniversityMHIProjectContext())
+            {
+                int diagnosticID = db.DiagnosisTest.Where(x => x.TestType == diagnosticType && x.TestSubType == subType).FirstOrDefault().DiagnosisTestID;
+                db.PatientTestJunction.Add(new PatientTestJunction { PatientId = patientID, DiagnosisTestID = diagnosticID, Date = Date, DiagnosticProblem = DiagnosisProblem, ReasonStudy = reasonTest });
+                db.SaveChanges();
+            }
+            Response.Redirect("ReturningPatient.aspx");
+
+
         }
     }
 }

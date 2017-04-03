@@ -1,31 +1,6 @@
 ﻿var loginUser = "";
 $(document).ready(function ($) {
-    //alert(loginUser);
-  
-        //$('#LoginPage').show();
-        //$('#form1').hide();
-  
-    
-
-        //$('#addDetailsButton').click(function () {
-        //    $.ajax({
-        //        type: "GET",
-        //       url: "Index.aspx/addDetailsButtonClick",
-        //        //contentType: 'application/json; charset=utf-8',
-        //        //dataType: 'json',
-        //        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
-        //        },
-        //        success: function (data) {
-        //            $('#modal').hide();
-        //            $('#NewPatientDetails').hide();
-        //            $('#OpeningDiv').show();
-        //            alert(data);
-        //        }
-
-        //    });
-        //});
-
+   
       
 
     $('#cancelButton').click(function () {
@@ -68,8 +43,17 @@ $(document).ready(function ($) {
     $('#btnDiagnosticExamSubmit').click(function () {
         //$('#modal').show();
         //alert("hey lo");
-        $("#lblDecisionSupportText").html("CT without contrast is not indicated initally [Grade B- moderate evidence] Includes situations where experience shows that the clinical problem usually resolves with time,and where deferring the study is suggested.CT is only indicated for patients with severe hemoptysis or other risk factors . (see F17 Hemoptysis: smoker, high risk of malignancy, >40 yrs of recurrent).Radiation Dose (mSv): 5 - 10 Reference source: <a href='http://www.car.ca/uploads/standards%20guidelines/car-referralguidelines-f-en_20120918.pdf' target='_blank' title='Canadian Association of Radiologists Referral guidelines for Thoracic system '> Canadian Association of Radiologists Referral guidelines for Thoracic system </a>");
-        $('#Page-Dialog-DecisionSupport').show();
+
+        if ($('#DropDownListMRI').val() == "Spine - Cervical Spine" || $('#DropDownListMRI').val() == "Spine - Lumbar Spine")
+        {
+            $("#lblDecisionSupportText").html("CT without contrast is not indicated initally [Grade B- moderate evidence] Includes situations where experience shows that the clinical problem usually resolves with time,and where deferring the study is suggested.CT is only indicated for patients with severe hemoptysis or other risk factors . (see F17 Hemoptysis: smoker, high risk of malignancy, >40 yrs of recurrent).Radiation Dose (mSv): 5 - 10 Reference source: <a href='http://www.car.ca/uploads/standards%20guidelines/car-referralguidelines-f-en_20120918.pdf' target='_blank' title='Canadian Association of Radiologists Referral guidelines for Thoracic system '> Canadian Association of Radiologists Referral guidelines for Thoracic system </a>");
+            $('#Page-Dialog-DecisionSupport').show();
+        }
+        else {
+            $('.TestInfo').hide();
+            $('.ConfirmOrder').show();
+        }
+        
         // $('#OpeningDiv').hide();
     });
 

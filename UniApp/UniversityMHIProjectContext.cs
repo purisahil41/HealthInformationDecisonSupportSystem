@@ -17,7 +17,11 @@ namespace UniApp
 
         public virtual DbSet<DiagnosisTest> DiagnosisTest { get; set; }
 
-        public virtual DbSet<PatientTestJunction> PatientTestJunction { get; set; } 
+        public virtual DbSet<PatientTestJunction> PatientTestJunction { get; set; }
+
+        public virtual DbSet<DiagnosisProblem> DiagnosisProblem { get; set; }
+        
+        public virtual DbSet<StudyReason> StudyReason{ get; set; } 
 
 
 

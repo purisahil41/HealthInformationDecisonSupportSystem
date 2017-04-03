@@ -132,8 +132,8 @@
                           <asp:ListItem>-- Select One --</asp:ListItem>
                       </asp:DropDownList>
                     </div>
-                    <input type="submit" class="SubmitButton btn btn-info" value="Submit Button"/>
-                    <asp:LinkButton ID="btnDiagnosticExamSubmit" Text ="Submit Test" CssClass="SubmitButton btn btn-info"  OnClientClick="return false;" runat="server"/>
+                                     <asp:LinkButton ID="btnDiagnosticExamSubmit" Text ="Submit Test" CssClass="SubmitButton btn btn-info"  OnClientClick="return false;" runat="server"/>
+                    
                 </div>
                 <div class="ConfirmOrder">
                         <div class="label" style="font-size: 18px; color: black; margin-left: -34%;">
@@ -141,15 +141,21 @@
                         </div>
                         <div class="TestInfoBox" style="margin-top: 25.5px;">
                             <span class="PatientInfoBoxSpan pull-left">Reasons for Study</span>
-                            <select class="pull-right"></select>
+                              <asp:DropDownList ID="StudyReasonDropdown"  runat="server" AutoPostBack="false" CssClass="pull-right">
+                <asp:ListItem>-- Select One --</asp:ListItem>
+   
+            </asp:DropDownList>
                         </div>
                         <div class="TestInfoBox" style="margin-top: -0.5%;">
                             <span class="PatientInfoBoxSpan pull-left">Diagnosis/Problem</span>
-                            <select class="pull-right"></select>
+                              <asp:DropDownList ID="DiagnosisProblemDropDon" runat="server" AutoPostBack="false" CssClass="pull-right">
+                <asp:ListItem>-- Select One --</asp:ListItem>
+   
+            </asp:DropDownList>
                         </div>
                         <label for="overrideReason" style="position: absolute; margin-left: -37.05%; margin-top: 5%; font-weight: normal;">Please specify the reason if not included in above list:</label>
                         <input type="text" class="form-control" id="overrideReason" style="height: 35%; width: 28%; margin-left: 1%; margin-top: 4.2%;"/>
-                        <div id="placeOrder"  class="SubmitButton btn btn-info" style="margin-top: -7%;">Place Order</div>  
+                        <asp:Button runat="server" id="placeOrder" CssClass="SubmitButton btn btn-info" style="margin-top: -7%;" Text="Place Order" OnClick="orderConfirmation"></asp:Button>  
                 </div>
             </div>
             <div id="Page-Dialog-DecisionSupport" class="modal-content" style="display: none;">

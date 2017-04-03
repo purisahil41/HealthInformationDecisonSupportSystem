@@ -74,7 +74,7 @@
                 </div>
                 <div class="form-group" style="margin-left: 5%; width: 40%;padding-top: 0.01%;">
                     <label for="gender">Sex:</label>
-                    <asp:DropDownList id="gender" runat="server" AutoPostBack="true" Style="width: 40%; margin-left: 5%;height: 5%;">
+                    <asp:DropDownList id="gender" runat="server" AutoPostBack="false" Style="width: 40%; margin-left: 5%;height: 5%;">
                         <asp:ListItem>Male</asp:ListItem>
                         <asp:ListItem>Female</asp:ListItem>
                     </asp:DropDownList>
