@@ -1,0 +1,9 @@
+{
+  "name": "kbn_widget_vis",
+  "version": "5.4.0",
+  "authors": [
+    "Sahil Puri"
+  ],
+  "description": "Widget Slicer visualization plugin",
+  "main": "index.js"
+}

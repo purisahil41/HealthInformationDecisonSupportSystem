@@ -1,0 +1,132 @@
+<div ng-controller="KbnWidgetVisController" class="metric-vis widget-control">
+    <div class="metric-container">
+        <div ng-if="!dataLoaded">
+            Please add this visualization in any dashboard to apply widget controls!
+        </div>
+        <div ng-if="dataLoaded" class="OuterDataLoadedDiv" ng-hide="FilterAddEditView">
+            <!-- <div ng-repeat="filter in appliedFilters" class="AddFilterRow" ng-style="{'background' : ($index % 2 === 1) ? '{{filterRowColor}}' : '{{filterRowColorAlt}}'}"> -->
+            <div ng-repeat="filter in appliedFilters" class="AddFilterRow" ng-style="getStyle(this)">
+                <div class="FilterInfo" title="{{filter.meta.index}} [ {{filter.meta.key}} - {{filter.meta.value}} ]" ng-style="getFontStyle(this)">
+                <span> {{filter.meta.index}} [ {{filter.meta.key}} - {{filter.meta.value}} ]
+                </span>
+                </div>
+                <div class="YesNo">
+                    <center>
+                    <div class="Delete fa fa-pencil" ng-click="EditFilter($index)">
+                    
+                    </div> 
+                    <div class="Delete fa fa-times" ng-click="DeleteFilter($index)" style="background:#D62C1A;">
+                    
+                    </div>  
+                    </center>                  
+                </div>
+            </div>
+            <div class="AddFilterRow" ng-hide="queryText=='*'" title="Query [ {{queryText}} ]">
+                <div class="FilterInfo" ng-style="getFontStyle(this)">
+                <span> Query [ {{queryText}} ]
+                </span>
+                </div>
+                <div class="YesNo">
+                    <center>                    
+                    <div class="Delete fa fa-times" ng-click="removeQuery()" style="background:#D62C1A;">                    
+                    </div>  
+                    </center>                  
+                </div>
+            </div>
+            <div class="AddFilterRow" ng-style="getLastRowStyle()">
+                <div class="AddFilterButton" id="AddFilter" ng-click="AddFilter()" >
+                    + Add Filter!
+                </div>
+            </div>
+        </div>
+        <div ng-if="dataLoaded" class="OuterDataLoadedDiv" ng-show="FilterAddEditView">
+            <div class="AddEditFilterHeader">
+                Enter Filter Details!
+            </div>
+            <div class="IndexSelectRow" style="margin-top:2%">
+                <div class="SelecterHeader">
+                    Index :
+                </div>
+                <select class="selectList indexList" ng-options="index as index.id for index in allIndexes" ng-model="selectedIndex" ng-change="updateFilterIndex(index)">
+                </select>
+            </div>
+            <div class="FieldTypeSelectRow" ng-show="filterIndexSelected || filterUpdateModeOn">
+                <div class="SelecterHeader">
+                    Field Type :
+                </div>
+                <select class="selectList fieldTypeList" ng-options="fieldType as fieldType for fieldType in allFieldTypes" ng-model="selectedFieldType" ng-change="updateFilterFieldType()">
+                </select>
+            </div>
+            <div class="FieldSelectRow" ng-show="filterFieldTypeSelected || filterUpdateModeOn">
+                <div class="SelecterHeader">
+                    Field :
+                </div>
+                <select class="selectList fieldList" ng-options="fieldObj as fieldObj.field.name for fieldObj in allFields" ng-model="selectedField" ng-change="updateFilterField()">
+                </select>
+            </div>
+            <div class="FieldSelectRow" ng-show="filterSelectedFieldType == 'Measures' && (filterFieldSelected || filterUpdateModeOn)" >
+                <div class="SelecterHeader" style="width:25%;float:left">
+                    Min :
+                </div>
+                <div class="SelecterHeader" style="width:25%;float:left">
+                    <input type="text" class="minValue" ng-model="minValue" style="width:100%" placeholder="{{$parent.esValues.aggregations.min_value.value}}" />
+                </div>
+                <div class="SelecterHeader" style="width:25%;float:left">
+                    Max :
+                </div>
+                <div class="SelecterHeader" style="width:25%;float:left">
+                    <input  type="text" class="maxValue" ng-model="maxValue" style="width:100%" placeholder="{{$parent.esValues.aggregations.max_value.value}}"  />
+                </div>
+            </div>
+            <div class="FieldSelectRow" style="height:20%;"  ng-show="filterSelectedFieldType == 'Dimensions' && (filterFieldSelected || filterUpdateModeOn)">
+                <div class="SelecterHeader">
+                    Value:
+                </div>
+<!--                 <select class="selectList fieldValueList" ng-options="value as value.key for value in $parent.esValues.aggregations.top_counts.buckets" ng-model="selectedFieldValue">
+                </select> -->
+                <div class="OuterDivMultipleDimensionValues">
+                  <div class="dimensionValueList fieldValueList" ng-repeat="value in $parent.esValues.aggregations.top_counts.buckets">
+                  <div class="eachDimensionEntry">
+                    <input type="checkbox" class="dimensionCheckBox" ng-model="value.isSelected" ng-click="checkBoxSelected($index)"/>
+                    {{value.key}}
+                  </div>
+                  </div>
+                </div>
+            </div>
+            <div class="FieldSelectRow" ng-show="filterSelectedFieldType == 'Dates' && (filterFieldSelected || filterUpdateModeOn)" >
+                <div class="SelecterHeader" style="width:25%;float:left">
+                    Start :
+                </div>
+                <div class="SelecterHeader" style="width:70%;float:left">
+                    <input type="datetime-local" class="minDate" ng-model="minDateValue" style="width:100%;font-size: small;" value="{{minDateStr}}" min="{{minDateStr}}" max="{{maxDateStr}}" />
+                </div>
+                <div class="SelecterHeader" style="width:25%;float:left">
+                    End :
+                </div>
+                <div class="SelecterHeader" style="width:70%;float:left">
+                    <input type="datetime-local" class="maxDate" ng-model="maxValue" style="width:100%;font-size: small;" value="{{maxDateStr}}" min="{{minDateStr}}" max="{{maxDateStr}}" />
+                </div>
+            </div>
+            <div class="FieldSelectRow" >
+                <div class="SubmitButtonDiv">
+                    <center>
+                        <div class="SubmitButton" style="float:right" ng-click="ApplyFilter()" ng-show="filterFieldSelected && !filterUpdateModeOn">
+                            Apply!
+                        </div>
+                        <div class="SubmitButton" style="float:right" ng-click="ApplyFilter()" ng-show="filterUpdateModeOn">
+                            Update!
+                        </div>
+                         
+                    </center>
+                </div>
+                <div class="SubmitButtonDiv">
+                    <center>
+                        <div class="SubmitButton" style="float:left" ng-click="CancelFilter()">
+                            Cancel!
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
